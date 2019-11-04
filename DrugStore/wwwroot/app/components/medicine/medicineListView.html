@@ -1,0 +1,121 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Thuốc</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">DM Thuốc</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Default box -->
+                <div class="card">              
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div>
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="form-control" ng-model="keyword" placeholder="Tìm kiếm" aria-label="Search">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-default" ng-click="search()"><i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group input-group-sm">
+                                    <div>
+                                        <select class="form-control form-control-sm" ng-model="status" ng-change="search()">
+                                            <option value="">--Chọn trạng thái--</option>
+                                            <option value="Active">Đang bán </option>
+                                            <option value="InActive">Ngưng bán</option>
+                                        </select>
+                                    </div>
+                                    <!--<div class="input-group-append">
+                                        <button type="button" class="btn btn-default" ng-click="search()" data-toggle="tooltip" data-placement="top" title=""><i class="fas fa-plus-circle text-primary"></i></button>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="float-lg-right">
+                                    <button type="button" class="btn btn-sm btn-success" ui-sref="medicine_add"><i class="fas fa-plus"></i> Thêm mới</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <!-- /.card-footer-->
+                </div>
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Danh mục thuốc</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="card-refresh" ng-click="search()"><i class="fas fa-sync-alt"></i></button>
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                             
+                                <table class="table table-bordered table-striped table-hover ">
+                                    <thead>
+                                        <tr class="thead-light">
+                                            <th style="width: 15%">Mã thuốc</th>
+                                            <th>Tên thuốc</th>
+                                            <th style="width: 10%">Đơn giá</th>
+                                            <th style="width: 10%">Giá gốc</th>
+                                            <th style="width: 10%">Tồn kho</th>
+                                            <th style="width: 15%">Tình trạng</th>
+                                            <th style="width: 15%">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in listmedicine" class="">
+                                            <td>{{item.medicine_Code}}</td>
+                                            <td>{{item.medicine_Name}}</td>
+                                            <td>{{item.price | number:0}}</td>
+                                            <td>{{item.original_Price | number:0}}</td>
+                                            <td>{{item.quantity}}</td>
+                                            <td class="text-md-center text-md">
+                                                <div ng-class="{'badge badge-pill bg-danger': item.status==false,'badge badge-pill bg-green': item.status==true}">
+                                                    {{item.status | statusMedicineFilter}}
+                                                </div>
+                                            </td>
+                                            <td class="">
+                                                <button type="button" ui-sref="medicine_detail" data-toggle="tooltip" data-placement="top" title="Chi tiết" class="btn btn-info btn-xs"><i style="width:20px" class="fas fa-info"></i></button>
+                                                <button type="button" ui-sref="medicine_edit({id:item.id})" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa" class="btn btn-success btn-xs"><i style="width:20px" class="fas fa-edit"></i></button>
+                                                <button type="button" ng-click="deleteMedicine(item.id)" data-toggle="tooltip" data-placement="top" title="Xóa" class="btn btn-danger btn-xs"><i style="width:20px" class="fas fa-trash-alt"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <div class="float-left">
+                            <p class="text-muted text-sm">Hiển thị {{firstRowOnPage}} - {{lastRowOnPage}} trên tổng số {{totalCount}} bản ghi.</p>
+                        </div>
+                        <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getListEmployees(page)"></pager-directive>
+                    </div>
+                    <!-- /.card-footer-->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

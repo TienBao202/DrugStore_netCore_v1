@@ -1,0 +1,261 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Danh mục thuốc</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a ui-sref="dashboard">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a ui-sref="medicine">DM Thuốc</a></li>
+                    <li class="breadcrumb-item active">Cập nhật</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Default box -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Cập nhật thuốc: {{medicine.medicine_Name}}</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" novalidate name="frmAddMedicine" role="form" ng-submit="UpdateMedicine()">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card collapsed-card card-gray">
+                                        <div class="card-header">
+                                            <h4 class="card-title">
+                                                Thông tin chính
+                                            </h4>
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div>
+                                                        <img src="http://placehold.it/150x100" class="img-fluid" alt="Photo">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Mã hàng hóa <span style="color:red">(*)</span></label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control form-control-sm" name="inputCode" ng-model="medicine.medicine_Code" placeholder="Mã hàng hóa" required>
+                                                        </div>
+                                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddmedicine.inputCode.$touched && frmAddmedicine.inputCode.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập mã khách hàng!"> <i class="fas fa-times"></i></label>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Tên thuốc <span style="color:red">(*)</span></label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control form-control-sm" name="inputName" ng-model="medicine.medicine_Name" placeholder="Tên thuốc">
+                                                        </div>
+
+                                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddmedicine.inputName.$touched && frmAddmedicine.inputName.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập họ tên khách hàng!"> <i class="fas fa-times"></i></label>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Tên viết tắt </label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control form-control-sm" name="inputAlias" ng-model="medicine.medicine_Alias" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Nhóm thuốc <span style="color:red">(*)</span></label>
+                                                        <div class="col-sm-7">
+                                                            <div class="input-group">
+                                                                <select name="categoryId" required class="form-control form-control-sm"
+                                                                        ng-model="medicine.iD_Medicine_Category"
+                                                                        ng-options="option.id as option.category_Name for option in listcategory">
+                                                                    <option value="">--Chọn nhóm thuốc-</option>
+                                                                </select>
+                                                                <input type="hidden" name="categoryId" ng-model="medicine.ID_Medicine_Category" />
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" ui-sref="medicine_add"><i class="fas fa-plus"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Đơn vị <span style="color:red">(*)</span></label>
+                                                        <div class="col-sm-7">
+                                                            <div class="input-group">
+                                                                <select name="unitId" required class="form-control form-control-sm"
+                                                                        ng-model="medicine.iD_Medicine_Unit"
+                                                                        ng-options="option.id as option.unit_Name for option in listMedicine_unit">
+                                                                    <option value="">--Chọn đơn vị-</option>
+                                                                </select>
+                                                                <input type="hidden" name="unitId" ng-model="medicine.ID_Medicine_Unit" />
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" ui-sref="medicine_add"><i class="fas fa-plus"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Đơn giá </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control form-control-sm" name="inputprice" ng-model="medicine.price" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Giá gốc </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control form-control-sm" name="inputoriginalprice" ng-model="medicine.originalPrice" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Số lượng</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" class="form-control form-control-sm" name="inputquantity" ng-model="medicine.quantity" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputName" class="col-sm-3 col-form-label">Tình trạng</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="form-group">
+                                                                <div class="icheck-success d-inline">
+                                                                    <input type="radio" id="rad_active" name="inputstatus" ng-model="medicine.status" value="true">
+                                                                    <label for="rad_Nam">
+                                                                        Đang bán
+                                                                    </label>
+                                                                </div>
+                                                                <div class="icheck-danger d-inline">
+                                                                    <input type="radio" id="rad_inactive" name="inputstatus" ng-model="medicine.status" value="false">
+                                                                    <label for="rad_Nu">
+                                                                        Ngừng bán
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card collapsed-card card-gray">
+                                        <div class="card-header">
+                                            <h4 class="card-title">
+                                                Định mức tồn
+                                            </h4>
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Ít nhất </label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control form-control-sm" name="inputMin" ng-model="medicine.inventory_Min" value="0" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Nhiều nhất </label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control form-control-sm" name="inputMax" ng-model="medicine.inventory_Max" value="0" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card collapsed-card card-gray">
+                                        <div class="card-header">
+                                            <h4 class="card-title">
+                                                Thông tin thêm
+                                            </h4>
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Thành phần </label>
+                                                        <div class="col-sm-7">
+                                                            <textarea class="form-control form-control-sm" name="inputElement" ng-model="medicine.element" placeholder=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Tác dụng </label>
+                                                        <div class="col-sm-7">
+                                                            <textarea class="form-control form-control-sm" name="inputEffect" ng-model="medicine.effect" placeholder=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Cách dùng </label>
+                                                        <div class="col-sm-7">
+                                                            <textarea class="form-control form-control-sm" name="inputDosage" ng-model="medicine.dosage_And_Administration" placeholder=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Cách đóng gói </label>
+                                                        <div class="col-sm-7">
+                                                            <textarea class="form-control form-control-sm" name="inputPacking" ng-model="medicine.packing" placeholder=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Chỉ định </label>
+                                                        <div class="col-sm-7">
+                                                            <textarea class="form-control form-control-sm" name="inputIndications" ng-model="medicine.indications" placeholder=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Chống chỉ định </label>
+                                                        <div class="col-sm-7">
+                                                            <textarea class="form-control form-control-sm" name="inputContraindications" ng-model="medicine.contraindications" placeholder=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Chú ý </label>
+                                                        <div class="col-sm-7">
+                                                            <textarea class="form-control form-control-sm" name="inputCaution" ng-model="medicine.caution" placeholder=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-4 col-form-label">Thời hạn </label>
+                                                        <div class="col-sm-7">
+                                                            <textarea class="form-control form-control-sm" name="inputWarranty" ng-model="medicine.warranty" placeholder=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div class="float-lg-right">
+                                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Lưu</button>
+                                <button class="btn btn-default" ui-sref="medicine"><i class="fas fa-window-close"></i> Bỏ qua</button>
+                            </div>
+                        </div>
+                        <!-- /.card-footer -->
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

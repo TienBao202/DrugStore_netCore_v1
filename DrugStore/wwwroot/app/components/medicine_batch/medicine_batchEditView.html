@@ -1,0 +1,126 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Quản lý lô thuốc</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a ui-sref="dashboard">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a ui-sref="customers">DM Lô thuốc</a></li>
+                    <li class="breadcrumb-item active">Cập nhật</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Default box -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Cập nhật lô thuốc: {{medicine_batch.medicine_Batch_Code}}</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" novalidate name="frmAddMedicine_Batch" role="form" ng-submit="UpdateMedicine_batch()">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Mã lô thuốc <span style="color:red">(*)</span></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="inputCode" ng-model="medicine_batch.medicine_Batch_Code" placeholder="" required>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddmedicine_batch.inputCode.$touched && frmAddmedicine_batch.inputCode.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập mã khách hàng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Số lượng</label>
+                                        <div class="col-sm-4">
+                                            <input type="number" class="form-control form-control-sm" name="inputQuantity" ng-model="medicine_batch.quantity" placeholder="">
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddmedicine_batch.inputQuantity.$dirty && frmAddmedicine_batch.inputQuantity.$error.number" data-toggle="tooltip" data-placement="top" title="!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Ngày nhập</label>
+                                        <div class="col-sm-7">
+                                            <div class="input-group">
+                                                <input type="date" class="form-control form-control-sm" name="inputStart_Date" ng-model="medicine_batch.start_Date">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmAddmedicine_batch.inputBirthDay.$dirty"><i class="fas fa-check"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Ngày hết hạn</label>
+                                        <div class="col-sm-7">
+                                            <div class="input-group">
+                                                <input type="date" class="form-control form-control-sm" name="inputEnd_Date" ng-model="medicine_batch.end_Date">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmAddmedicine_batch.inputEnd_Date.$dirty"><i class="fas fa-check"></i></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Nhóm thuốc</label>
+                                        <div class="col-sm-7">
+                                            <select name="categoryId" required class="form-control form-control-sm"
+                                                    ng-model="medicine_batch.category"
+                                                    ng-options="option.id as option.category_Name for option in listcategory">
+                                                <option value="">--Chọn nhóm thuốc--</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Loại thuốc</label>
+                                        <div class="col-sm-7">
+                                            <select name="medicineId" required class="form-control form-control-sm"
+                                                    ng-model="medicine_batch.iD_Medicine"
+                                                    ng-options="option.id as option.medicine_Name for option in listmedicine">
+                                                <option value="">--Chọn loại thuốc--</option>
+                                            </select>
+                                            <input type="hidden" name="medicineId" ng-model="medicine_batch.iD_Medicine" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Xuất xứ</label>
+                                        <div class="col-sm-7">
+                                            <select name="countryId" required class="form-control form-control-sm"
+                                                    ng-model="medicine_batch.iD_Country"
+                                                    ng-options="option.id as option.country_Name for option in listcountry">
+                                                <option value="">--Chọn quốc gia--</option>
+                                            </select>
+                                            <input type="hidden" name="countryId" ng-model="medicine_batch.iD_Country" />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div class="float-lg-right">
+                                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Lưu</button>
+                                <button class="btn btn-default" ui-sref="medicine_batch"><i class="fas fa-window-close"></i> Bỏ qua</button>
+                            </div>
+                        </div>
+                        <!-- /.card-footer -->
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

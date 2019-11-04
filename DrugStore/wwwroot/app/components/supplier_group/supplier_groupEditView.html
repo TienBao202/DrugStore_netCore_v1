@@ -1,0 +1,219 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Nhân viên</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a ui-sref="dashboard">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a ui-sref="employees">Nhân viên</a></li>
+                    <li class="breadcrumb-item active">Cập nhật</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Default box -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Cập nhật nhân viên : {{employee.first_Name + ' ' + employee.last_Name}}</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" novalidate name="frmEditEmployee" role="form" ng-submit="EditEmployee()">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div>
+                                        <img src="http://placehold.it/150x100" class="img-fluid" alt="Photo">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Mã nhân viên</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="inputCode" ng-model="employee.employee_Code" placeholder="Mã nhân viên" required>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmEditEmployee.inputCode.$dirty"><i class="fas fa-check"></i></label>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmEditEmployee.inputCode.$touched && frmEditEmployee.inputCode.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập mã nhân viên!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Tên nhân viên</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" name="inputFirstName" ng-model="employee.first_Name" placeholder="Họ đệm">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control form-control-sm" name="inputLastName" ng-model="employee.last_Name" placeholder="Tên" required>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmEditEmployee.inputLastName.$dirty"><i class="fas fa-check"></i></label>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmEditEmployee.inputLastName.$touched && frmEditEmployee.inputLastName.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập họ tên!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Ngày sinh</label>
+                                        <div class="col-sm-7">
+                                            <div class="input-group">
+                                                <input type="date" class="form-control form-control-sm" name="inputBirthDay" ng-model="employee.birth_Day">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmEditEmployee.inputBirthDay.$dirty"><i class="fas fa-check"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Số CMND</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="inputIdentity_Number" ng-model="employee.identity_Number" placeholder="">
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmEditEmployee.inputIdentity_Number.$dirty"><i class="fas fa-check"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Ngày cấp CMND</label>
+                                        <div class="col-sm-7">
+                                            <div class="input-group">
+                                                <input type="date" class="form-control form-control-sm" name="inputIdentity_Date" ng-model="employee.identity_Date">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                </div>
+                                            </div>
+                                            <label class="col-sm-1 col-form-label text-success" ng-show="frmEditEmployee.inputIdentity_Date.$dirty"><i class="fas fa-check"></i></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Nơi cấp CMND</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="inputIdentity_Address" ng-model="employee.identity_Address" placeholder="">
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmEditEmployee.inputIdentity_Address.$dirty"><i class="fas fa-check"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Địa chỉ</label>
+                                        <div class="col-sm-7">
+                                            <textarea class="form-control form-control-sm" name="inputAddress" ng-model="employee.address" placeholder=""></textarea>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmEditEmployee.inputAddress.$dirty"><i class="fas fa-check"></i></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Chi nhánh</label>
+                                        <div class="col-sm-7">
+                                            <select name="agencyId" required class="form-control form-control-sm"
+                                                    ng-model="employee.iD_Agency"
+                                                    ng-options="option.id as option.agency_Name for option in listagency">
+                                                <option value="">Chọn chi nhánh</option>
+                                            </select>
+                                            <label class="col-sm-1 col-form-label text-success" ng-show="frmEditEmployee.agencyId.$touched"><i class="fas fa-check"></i></label>
+                                            <label class="col-sm-1 col-form-label text-danger" ng-show="frmEditEmployee.agencyId.$invalid" data-toggle="tooltip" data-placement="top" title="Phải chọn chi nhánh!"> <i class="fas fa-times"></i></label>
+                                            <input type="hidden" name="agencyId" ng-model="employee.iD_Agency" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Chức vụ</label>
+                                        <div class="col-sm-7">
+                                            <select name="positionId" required class="form-control form-control-sm"
+                                                    ng-model="employee.iD_Position"
+                                                    ng-options="option.id as option.position_Name for option in listposition">
+                                                <option value="">Chọn chức vụ</option>
+                                            </select>
+                                            <!--<ui-select ng-model="employee.ID_Position"name="positionId" theme="bootstrap" style="min-width: 300px;" title="Chọn chức vụ">
+                <ui-select-match placeholder="Vui lòng chọn chức vụ">{{$select.selected.position_Name}}</ui-select-match>
+                <ui-select-choices repeat="item.id as item in listposition | filter: $select.search">
+                    <div ng-bind-html="item.position_Name | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>-->
+                                            <label class="col-sm-1 col-form-label text-success" ng-show="frmEditEmployee.positionId.$touched"><i class="fas fa-check"></i></label>
+                                            <label class="col-sm-1 col-form-label text-danger" ng-show="frmEditEmployee.positionId.$invalid" data-toggle="tooltip" data-placement="top" title="Phải chọn chức vụ!"> <i class="fas fa-times"></i></label>
+                                            <input type="hidden" name="positionId" ng-model="employee.iD_Position" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-3 col-form-label">Giới tính</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <div class="icheck-success d-inline">
+                                                    <input type="radio" id="rad_Nam" name="inputGender" ng-model="employee.gender" value="true">
+                                                    <label for="rad_Nam">
+                                                        Nam
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-success d-inline">
+                                                    <input type="radio" id="rad_Nu" name="inputGender" ng-model="employee.gender" value="false">
+                                                    <label for="rad_Nu">
+                                                        Nữ
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Điện thoại</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control form-control-sm" name="inputPhone" ng-model="employee.phone_Number" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Email</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" class="form-control form-control-sm" name="inputEmail" ng-model="employee.email" placeholder="">
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmEditEmployee.inputEmail.$touched"><i class="fas fa-check"></i></label>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmEditEmployee.inputEmail.$dirty && frmEditEmployee.inputEmail.$error.email" data-toggle="tooltip" data-placement="top" title="Email nhập chưa đúng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Lương cơ bản</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control form-control-sm" name="inputUserCreate" ng-model="employee.salary_Min" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Người tạo</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control form-control-sm" name="inputUserCreate" ng-model="employee.user_Created" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-3 col-form-label">Trạng thái</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <div class="icheck-success d-inline">
+                                                    <input type="radio" id="rad_active" name="inputStatus" ng-model="employee.status" value="1">
+                                                    <label for="rad_active">
+                                                        Đang làm việc
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-success d-inline">
+                                                    <input type="radio" id="rad_inactive" name="inputStatus" ng-model="employee.status" value="0">
+                                                    <label for="rad_inactive">
+                                                        Đã nghỉ
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div class="float-lg-right">
+                                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Lưu</button>
+                                <button class="btn btn-default" ui-sref="employees"><i class="fas fa-window-close"></i> Bỏ qua</button>
+                            </div>
+                        </div>
+                        <!-- /.card-footer -->
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

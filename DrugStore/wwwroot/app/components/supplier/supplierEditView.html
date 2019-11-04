@@ -1,0 +1,123 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Nhà cung cấp</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a ui-sref="dashboard">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a ui-sref="customers">NCC</a></li>
+                    <li class="breadcrumb-item active">Cập nhật</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Default box -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Cập nhật nhà cung cấp: {{supplier.supplier_Name}}</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" novalidate name="frmAddsupplier" role="form" ng-submit="UpdateSupplier()">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Mã nhà cung cấp</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="inputCode" ng-model="supplier.supplier_Code" placeholder="" required>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddsupplier.inputCode.$touched && frmAddsupplier.inputCode.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập mã khách hàng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Tên nhà cung cấp</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="inputName" ng-model="supplier.supplier_Name" placeholder="Tên" required>
+                                        </div>
+
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddsupplier.inputName.$touched && frmAddsupplier.inputName.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập họ tên khách hàng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Điện thoại</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control form-control-sm" name="inputPhone" ng-model="supplier.phone_Number" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Địa chỉ</label>
+                                        <div class="col-sm-7">
+                                            <textarea class="form-control form-control-sm" name="inputAddress" ng-model="supplier.address" placeholder=""></textarea>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmAddsupplier.inputAddress.$dirty"><i class="fas fa-check"></i></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Chi nhánh</label>
+                                        <div class="col-sm-7">
+                                            <select name="groupId" required class="form-control form-control-sm"
+                                                    ng-model="supplier.iD_Supplier_Group"
+                                                    ng-options="option.id as option.supplier_Group_Name for option in listgroup">
+                                                <option value="">Chọn nhóm NCC</option>
+                                            </select>
+
+                                            <input type="hidden" name="groupId" ng-model="supplier.iD_Supplier_Group" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Mã thuế</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control form-control-sm" name="inputUserCreate" ng-model="supplier.tax_Code" placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Email</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" class="form-control form-control-sm" name="inputEmail" ng-model="supplier.email" placeholder="">
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmAddsupplier.inputEmail.$touched"><i class="fas fa-check"></i></label>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddsupplier.inputEmail.$dirty && frmAddsupplier.inputEmail.$error.email" data-toggle="tooltip" data-placement="top" title="Email nhập chưa đúng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-3 col-form-label">Tình trạng</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <div class="icheck-danger d-inline">
+                                                    <input type="checkbox" id="rad_inactive" name="inputstatus" ng-model="supplier.status" ng-checked="supplier.status">
+                                                    <label for="rad_Nu">
+                                                        Ngừng hoạt động
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div class="float-lg-right">
+                                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Lưu</button>
+                                <button class="btn btn-default" ui-sref="suppliers"><i class="fas fa-window-close"></i> Bỏ qua</button>
+                            </div>
+                        </div>
+                        <!-- /.card-footer -->
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

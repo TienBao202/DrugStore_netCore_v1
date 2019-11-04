@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DrugStore.Data.EF\DrugStore.Data.EF.csproj" />
+    <ProjectReference Include="..\DrugStore.Data\DrugStore.Data.csproj" />
+    <ProjectReference Include="..\DrugStore.Utilities\DrugStore.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

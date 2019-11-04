@@ -1,0 +1,123 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Quản lý tài khoản</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a ui-sref="dashboard">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a ui-sref="customers">Tài khoản</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Default box -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Thêm mới tài khoản</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" novalidate name="frmAddaccount" role="form" ng-submit="AddAccount()">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Họ và tên <span style="color:red">(*)</span></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="fullname" ng-model="account.FullName" placeholder="" required>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddaccount.fullname.$touched && frmAddaccount.fullname.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập mã khách hàng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Tên đăng nhập <span style="color:red">(*)</span></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="username" ng-model="account.UserName" placeholder="" required>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddaccount.username.$touched && frmAddaccount.username.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập mã khách hàng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Mật khẩu <span style="color:red">(*)</span></label>
+                                        <div class="col-sm-7">
+                                            <input type="password" class="form-control form-control-sm" name="password" ng-model="account.Password" placeholder="" required>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddaccount.password.$touched && frmAddaccount.password.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập mã khách hàng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-3 col-form-label">Tình trạng</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <div class="icheck-success d-inline">
+                                                    <input type="radio" id="rad_active" name="inputstatus" ng-model="account.Status" ng-checked="account.Status">
+                                                    <label for="rad_active">
+                                                        Kích hoạt
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Điện thoại</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control form-control-sm" name="phone" ng-model="account.Phone_Number" placeholder="" required>
+                                        </div>
+
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddaccount.phone.$dirty && frmAddaccount.phone.$invalid" data-toggle="tooltip" data-placement="top" title="Email nhập chưa đúng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Email</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" class="form-control form-control-sm" name="inputEmail" ng-model="account.Email" placeholder="">
+                                        </div>
+
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddaccount.inputEmail.$dirty && frmAddaccount.inputEmail.$error.email" data-toggle="tooltip" data-placement="top" title="Email nhập chưa đúng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Địa chỉ</label>
+                                        <div class="col-sm-8">
+                                            <textarea class="form-control form-control-sm" name="address" ng-model="account.Address" placeholder=""></textarea>
+                                        </div>
+
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddaccount.address.$dirty && frmAddaccount.address.$invalid" data-toggle="tooltip" data-placement="top" title="Email nhập chưa đúng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Nhân viên</label>
+                                        <div class="col-sm-7">
+                                            <select name="countryId" required class="form-control form-control-sm"
+                                                    ng-model="account.ID_Employee"
+                                                    ng-options="option.id as option.employee_Name for option in listemployee">
+                                                <option value="">--Chọn nhân viên--</option>
+                                            </select>
+                                            <input type="hidden" name="countryId" ng-model="account.ID_Employee" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div class="float-lg-right">
+                                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Lưu</button>
+                                <button class="btn btn-default" ui-sref="account"><i class="fas fa-window-close"></i> Bỏ qua</button>
+                            </div>
+                        </div>
+                        <!-- /.card-footer -->
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

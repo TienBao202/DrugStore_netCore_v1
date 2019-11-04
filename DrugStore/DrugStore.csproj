@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\app\components\suppliers\**" />
+    <Content Remove="wwwroot\app\components\suppliers\**" />
+    <EmbeddedResource Remove="wwwroot\app\components\suppliers\**" />
+    <None Remove="wwwroot\app\components\suppliers\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\DrugStore.Application\DrugStore.Application.csproj" />
+    <ProjectReference Include="..\DrugStore.Data.EF\DrugStore.Data.EF.csproj" />
+    <ProjectReference Include="..\DrugStore.Data\DrugStore.Data.csproj" />
+    <ProjectReference Include="..\DrugStore.Infrastructure\DrugStore.Infrastructure.csproj" />
+    <ProjectReference Include="..\DrugStore.Utilities\DrugStore.Utilities.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\app\components\invoice_detail\" />
+    <Folder Include="wwwroot\app\components\supplier\" />
+    <Folder Include="wwwroot\app\components\supplier_group\" />
+    <Folder Include="wwwroot\app\shared\footer\" />
+    <Folder Include="wwwroot\app\shared\navigation\" />
+    <Folder Include="wwwroot\bundled\" />
+    <Folder Include="wwwroot\templates\" />
+  </ItemGroup>
+
+</Project>

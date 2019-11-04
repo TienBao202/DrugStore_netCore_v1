@@ -1,0 +1,189 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Khách hàng</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a ui-sref="dashboard">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a ui-sref="customers">Khách hàng</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Default box -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Thêm mới khách hàng</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" novalidate name="frmAddCustomer" role="form" ng-submit="AddCustomer()">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div>
+                                        <img src="http://placehold.it/150x100" class="img-fluid" alt="Photo">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group row">
+                                        <label for="inputName" class="col-sm-4 col-form-label">Loại khách hàng</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-group clearfix">
+                                                <div class="icheck-success d-inline">
+                                                    <input type="radio" id="rad_CaNhan" name="inputType" ng-change="changeGender()" ng-model="customer.Customer_Type" value="true">
+                                                    <label for="rad_CaNhan">
+                                                        Cá nhân
+                                                    </label>
+                                                </div>
+                                                <div class="icheck-success d-inline">
+                                                    <input type="radio" id="rad_CongTy" name="inputType" ng-change="changeGender()" ng-model="customer.Customer_Type" value="false">
+                                                    <label for="rad_CongTy">
+                                                        Công ty
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Mã khách hàng</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="inputCode" ng-model="customer.Customer_Code" placeholder="Mã khách hàng" required>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmAddCustomer.inputCode.$dirty"><i class="fas fa-check"></i></label>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddCustomer.inputCode.$touched && frmAddCustomer.inputCode.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập mã khách hàng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Tên khách hàng</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control form-control-sm" name="inputFirstName" ng-model="customer.First_Name" placeholder="Họ đệm">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control form-control-sm" name="inputLastName" ng-model="customer.Last_Name" placeholder="Tên" required>
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmAddCustomer.inputLastName.$dirty"><i class="fas fa-check"></i></label>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddCustomer.inputLastName.$touched && frmAddCustomer.inputLastName.$invalid" data-toggle="tooltip" data-placement="top" title="Bạn chưa nhập họ tên khách hàng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Ngày sinh</label>
+                                        <div class="col-sm-7">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control form-control-sm" name="inputBirthDay" ng-model="customer.Birth_Day">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Điện thoại</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="inputPhone" ng-model="customer.Phone_Number" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Địa chỉ</label>
+                                        <div class="col-sm-7">
+                                            <textarea class="form-control form-control-sm" name="inputAddress" ng-model="customer.Address" placeholder=""></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Chi nhánh</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control form-control-sm" id="inputCode" placeholder="" value="Chi nhánh trung tâm" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Mã số thuế</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control form-control-sm" name="inputTaxCode" ng-model="customer.Tax_Code" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div ng-if="customer.Customer_Type == 'true'">
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-3 col-form-label">Giới tính</label>
+                                            <div class="col-sm-8">
+                                                <div class="form-group">
+                                                    <div class="icheck-success d-inline">
+                                                        <input type="radio" id="rad_Nam" name="inputGender" ng-model="customer.gender" value="true">
+                                                        <label for="rad_Nam">
+                                                            Nam
+                                                        </label>
+                                                    </div>
+                                                    <div class="icheck-success d-inline">
+                                                        <input type="radio" id="rad_Nu" name="inputGender" ng-model="customer.gender" value="false">
+                                                        <label for="rad_Nu">
+                                                            Nữ
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="customer.Customer_Type == 'false'">
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-3 col-form-label">Giới tính</label>
+                                            <div class="col-sm-8">
+                                                <div class="form-group">
+                                                    <div class="icheck-success d-inline">
+                                                        <input type="radio" id="rad_Nam" name="inputGender" disabled>
+                                                        <label for="rad_Nam">
+                                                            Nam
+                                                        </label>
+                                                    </div>
+                                                    <div class="icheck-success d-inline">
+                                                        <input type="radio" id="rad_Nu" name="inputGender" disabled>
+                                                        <label for="rad_Nu">
+                                                            Nữ
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Email</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" class="form-control form-control-sm" name="inputEmail" ng-model="customer.Email" placeholder="">
+                                        </div>
+                                        <label class="col-sm-1 col-form-label text-success" ng-show="frmAddCustomer.inputEmail.$touched"><i class="fas fa-check"></i></label>
+                                        <label class="col-sm-1 col-form-label text-danger" ng-show="frmAddCustomer.inputEmail.$dirty && frmAddCustomer.inputEmail.$error.email" data-toggle="tooltip" data-placement="top" title="Email nhập chưa đúng!"> <i class="fas fa-times"></i></label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Người tạo</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control form-control-sm" name="inputUserCreate" ng-model="customer.User_Created" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div class="float-lg-right">
+                                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Lưu</button>
+                                <button class="btn btn-default" ui-sref="customers"><i class="fas fa-window-close"></i> Bỏ qua</button>
+                            </div>                           
+                        </div>
+                        <!-- /.card-footer -->
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+            </div>
+    </div>
+</section>
+<!-- /.content -->

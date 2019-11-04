@@ -1,0 +1,319 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DrugStore - Trang chủ</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link href="~/lib/icheck-bootstrap/icheck-bootstrap.css" rel="stylesheet" />
+    <!-- overlayScrollbars -->
+    <link href="~/lib/overlayScrollbars/css/OverlayScrollbars.css" rel="stylesheet" />
+    <!-- notification -->
+    <link href="~/lib/toastr/toastr.css" rel="stylesheet" />
+    <!-- theme style -->
+    <link rel="stylesheet" href="~/admin-side/css/adminlte.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini text-sm layout-fixed layout-navbar-fixed sidebar-open" ng-app="drugstore">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-dark navbar-info">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a ui-sref="invoice" class="nav-link"><i class="fas fa-shopping-basket"></i> Bán hàng</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-wrench"></i> Thiết lập <i class="fas fa-sort-down"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                        <a ui-sref="account" class="dropdown-item">
+                            <i class="fas fa-user-lock"></i> Quản lý người dùng
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a ui-sref="employees" class="dropdown-item">
+                            <i class="fas fa-user-tie"></i> Quản lý nhân viên
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-code-branch"></i> Quản lý chi nhánh
+                        </a>
+                    </div>
+
+                </li>
+
+            </ul>
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-warning navbar-badge">15</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 8 friend requests
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file mr-2"></i> 3 new reports
+                            <span class="float-right text-muted text-sm">2 days</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown user-menu">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/admin-side/img/avatar5.png" class="user-image img-circle elevation-2" alt="User Image">
+                        <span class="d-none d-md-inline">Admin</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <!-- User image -->
+                        <li class="user-header bg-primary">
+                            <img src="~/admin-side/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+                            <p>
+                                Admin - Web Developer
+                                <small>20/10/2019</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <a href="#" class="btn btn-default btn-flat">Tài khoản</a>
+                            <a href="#" class="btn btn-default btn-flat float-right">Đăng xuất</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="#" class="brand-link navbar-secondary">
+                <img src="~/admin-side/img/AdminLTELogo.png"
+                     alt="DrugStore Logo"
+                     class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">DrugStore</span>
+            </a>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+                        <li class="nav-header">QUẢN LÝ CỬA HÀNG</li>
+                        <li class="nav-item">
+                            <a ui-sref="dashboard" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Tổng quan
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-box-open"></i>
+                                <p>
+                                    Hàng hóa
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a ui-sref="medicine" class="nav-link">
+                                        <i class="fas fa-capsules nav-icon"></i>
+                                        <p>Thuốc</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a ui-sref="medicine_category" class="nav-link">
+                                        <i class="fas fa-book-medical nav-icon"></i>
+                                        <p>Nhóm thuốc</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a ui-sref="medicine_batch" class="nav-link">
+                                        <i class="fas fa-first-aid nav-icon"></i>
+                                        <p>Lô thuốc</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-exchange-alt"></i>
+                                <p>
+                                    Giao dịch
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a ui-sref="invoice" class="nav-link">
+                                        <i class="fas fa-file-invoice-dollar nav-icon"></i>
+                                        <p>Hóa đơn</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a ui-sref="purchase_order" class="nav-link">
+                                        <i class="fas fa-share-square nav-icon"></i>
+                                        <p>Nhập hàng</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-handshake"></i>
+                                <p>
+                                    Đối tác
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a ui-sref="customers" class="nav-link">
+                                        <i class="fas fa-user nav-icon"></i>
+                                        <p>Khách hàng</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a ui-sref="supplier" class="nav-link">
+                                        <i class="fas fa-undo-alt nav-icon"></i>
+                                        <p>Nhà cung cấp</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div ui-view></div>
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 3.0.0-rc.3
+            </div>
+            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            reserved.
+        </footer>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/lib/jQuery/dist/jquery.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- InputMask -->
+    <script src="~/lib/inputmask/dist/jquery.inputmask.bundle.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/lib/overlayScrollbars/js/jquery.overlayScrollbars.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/admin-side/js/adminlte.min.js"></script>
+    <!-- Add angular js -->
+    <script src="~/lib/angular/angular.js"></script>
+    <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="~/lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <!--  Notification js -->
+    <script src="~/lib/toastr/toastr.js"></script>
+    <!--  bootbox js -->
+    <script src="~/lib/bootbox/bootbox.js"></script>
+    <script src="~/lib/ngBootbox/ngBootbox.js"></script>
+    <script src="~/lib/angular-ui-select/dist/select.js"></script>
+    <!-- Modules Common -->
+    <script src="~/app/shared/modules/drugStore.common.js"></script>
+    <!-- Filter -->
+    <script src="~/app/shared/filter/statusFilter.js"></script>
+    <script src="~/app/shared/filter/genderFilter.js"></script>
+    <script src="~/app/shared/filter/commonFilter.js"></script>
+    <!-- service and directive -->
+    <script src="~/app/shared/services/apiService.js"></script>
+    <script src="~/app/shared/directives/pagerDirective.js"></script>
+    <script src="~/app/shared/services/notificationService.js"></script>
+    <script src="~/app/shared/services/commonService.js"></script>
+    <!-- Modules -->
+    <script src="~/app/components/customers/customers.module.js"></script>
+    <script src="~/app/components/employees/employees.module.js"></script>
+    <script src="~/app/components/medicine/medicine.module.js"></script>
+    <script src="~/app/components/medicine_batch/medicine_batch.module.js"></script>
+    <script src="~/app/components/medicine_category/medicine_category.module.js"></script>
+    <script src="~/app/components/medicine_unit/medicine_unit.module.js"></script>
+    <script src="~/app/components/supplier/supplier.module.js"></script>
+    <script src="~/app/components/supplier_group/supplier_group.module.js"></script>
+    <script src="~/app/components/invoice/invoice.module.js"></script>
+    <script src="~/app/components/account/account.module.js"></script>
+    <script src="~/app/app.js"></script>
+    <!-- Controller -->
+    <script src="~/app/components/customers/customerListController.js"></script>
+    <script src="~/app/components/customers/customerAddController.js"></script>
+    <script src="~/app/components/customers/customerEditController.js"></script>
+    <script src="~/app/components/dashboard/dashboardController.js"></script>
+    <script src="~/app/components/employees/employeeListController.js"></script>
+    <script src="~/app/components/employees/employeeAddController.js"></script>
+    <script src="~/app/components/employees/employeeEditController.js"></script>
+    <script src="~/app/components/medicine/medicineAddController.js"></script>
+    <script src="~/app/components/medicine/medicineEditController.js"></script>
+    <script src="~/app/components/medicine/medicineListController.js"></script>
+    <script src="~/app/components/medicine_batch/medicine_batchAddController.js"></script>
+    <script src="~/app/components/medicine_batch/medicine_batchEditController.js"></script>
+    <script src="~/app/components/medicine_batch/medicine_batchListController.js"></script>
+    <script src="~/app/components/medicine_category/medicine_categoryAddController.js"></script>
+    <script src="~/app/components/medicine_category/medicine_categoryEditController.js"></script>
+    <script src="~/app/components/medicine_category/medicine_categoryListController.js"></script>
+    <script src="~/app/components/medicine_unit/medicine_unitAddController.js"></script>
+    <script src="~/app/components/supplier/supplierAddController.js"></script>
+    <script src="~/app/components/supplier/supplierEditController.js"></script>
+    <script src="~/app/components/supplier/supplierListController.js"></script>
+    <script src="~/app/components/supplier_group/supplier_groupAddController.js"></script>
+    <script src="~/app/components/supplier_group/supplier_groupEditController.js"></script>
+    <script src="~/app/components/supplier_group/supplier_groupListController.js"></script>
+    <script src="~/app/components/invoice/invoiceAddController.js"></script>
+    <script src="~/app/components/invoice/invoiceListController.js"></script>
+    <script src="~/app/components/invoice/invoice_detailController.js"></script>
+    <script src="~/app/components/account/accountAddController.js"></script>
+    <script src="~/app/components/account/accountEditController.js"></script>
+    <script src="~/app/components/account/accountListController.js"></script>
+</body>
+</html>
